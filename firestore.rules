@@ -1,0 +1,93 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // ── Helper functions ────────────────────────────────────────
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isOwner(uid) {
+      return isSignedIn() && request.auth.uid == uid;
+    }
+
+    function getUserRole() {
+      return exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        ? get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role
+        : 'member';
+    }
+
+    function isModerator() {
+      return isSignedIn() && getUserRole() in ['moderator', 'admin'];
+    }
+
+    function isAdmin() {
+      return isSignedIn() && getUserRole() == 'admin';
+    }
+
+    function isNotBanned() {
+      return !exists(/databases/$(database)/documents/users/$(request.auth.uid))
+        || !get(/databases/$(database)/documents/users/$(request.auth.uid)).data.get('isBanned', false);
+    }
+
+    // ── Users ───────────────────────────────────────────────────
+    match /users/{uid} {
+      // Anyone can read public profiles
+      allow read: if true;
+      // Users can only write their own profile (not role or isBanned)
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid)
+        && !request.resource.data.diff(resource.data).affectedKeys()
+            .hasAny(['role', 'isBanned']);
+      // Only admin can change roles or ban users
+      allow write: if isAdmin();
+
+      // ── Notifications (owned by user, written by server via Admin SDK) ──
+      match /notifications/{notifId} {
+        allow read: if isOwner(uid);
+        // Users can mark their own notifications as read
+        allow update: if isOwner(uid)
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['read']);
+        // Writes come from Admin SDK (server) — not from client directly
+        allow create, delete: if false;
+      }
+    }
+
+    // ── Communities ─────────────────────────────────────────────
+    match /communities/{communityId} {
+      // Anyone can read communities
+      allow read: if true;
+      // Only admins can create or modify communities
+      allow write: if isAdmin();
+    }
+
+    // ── Questions ───────────────────────────────────────────────
+    match /questions/{questionId} {
+      // Anyone can read open questions
+      allow read: if resource.data.status == 'open' || isModerator();
+      // Signed-in, non-banned users can create questions (via API route for moderation)
+      allow create: if isSignedIn() && isNotBanned();
+      // Author can update body; moderators can update status
+      allow update: if isOwner(resource.data.authorId)
+        || isModerator();
+      // Only admins can delete
+      allow delete: if isAdmin();
+
+      // ── Replies ───────────────────────────────────────────────
+      match /replies/{replyId} {
+        allow read: if resource.data.status == 'visible' || isModerator();
+        allow create: if isSignedIn() && isNotBanned();
+        allow update: if isOwner(resource.data.authorId) || isModerator();
+        allow delete: if isAdmin();
+      }
+    }
+
+    // ── Reports ─────────────────────────────────────────────────
+    match /reports/{reportId} {
+      allow read: if isModerator();
+      allow create: if isSignedIn();
+      allow update, delete: if isModerator();
+    }
+  }
+}

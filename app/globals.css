@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cosmic-dark: #05060b;
+  --color-cosmic-deep: #08090f;
+  --color-gold-bright: #ffd700;
+  --color-gold-matte:  #d4af37;
+  --color-gold-light:  #f3e5ab;
+  --color-gold-glow:   rgba(212, 175, 55, 0.3);
+
+  --font-serif: var(--font-cinzel), serif;
+  --font-sans:  var(--font-outfit), sans-serif;
+}
+
+body {
+  background-color: #05060b;
+  color: #f3e5ab;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 8px; }
+::-webkit-scrollbar-track { background: #05060b; }
+::-webkit-scrollbar-thumb { background: #1a1e2f; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #d4af37; }
+
+/* ── Decorative moon pulse ──────────────────────────────────────── */
+@keyframes moon-glow-pulse {
+  0%, 100% {
+    filter:
+      drop-shadow(0 0 12px rgba(230, 218, 150, 0.52))
+      drop-shadow(0 0 36px rgba(180, 150, 50,  0.22));
+  }
+  50% {
+    filter:
+      drop-shadow(0 0 22px rgba(242, 228, 162, 0.80))
+      drop-shadow(0 0 60px rgba(200, 160, 50,  0.40));
+  }
+}
+.moon-glow {
+  filter:
+    drop-shadow(0 0 12px rgba(230, 218, 150, 0.52))
+    drop-shadow(0 0 36px rgba(180, 150, 50,  0.22));
+  animation: moon-glow-pulse 4.2s ease-in-out infinite;
+}
+
+/* ── Node glow animations (Constellation) ───────────────────────── */
+@keyframes pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(212,175,55,0.4), 0 0 20px rgba(212,175,55,0.2);
+    border-color: rgba(212,175,55,0.8);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(212,175,55,0.8), 0 0 35px rgba(212,175,55,0.4);
+    border-color: rgba(255,215,0,1);
+  }
+}
+.glow-node { animation: pulse-glow 3s infinite ease-in-out; }
+
+/* ── Glassmorphism ─────────────────────────────────────────────── */
+.glass-panel {
+  background:       rgba(10, 13, 26, 0.72);
+  backdrop-filter:  blur(12px);
+  border:           1px solid rgba(212, 175, 55, 0.15);
+  box-shadow:       0 8px 32px 0 rgba(0, 0, 0, 0.38);
+}
+.glass-panel-hover { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.glass-panel-hover:hover {
+  background:    rgba(15, 20, 38, 0.86);
+  border-color:  rgba(212, 175, 55, 0.36);
+  box-shadow:    0 8px 32px 0 rgba(212, 175, 55, 0.10);
+  transform:     translateY(-2px);
+}

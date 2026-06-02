@@ -1,0 +1,19 @@
+rules_version = '2';
+
+// TEMPORARY SEED RULES — replace with production rules after seeding
+// These allow the seedCommunities.js script to write community documents.
+// After seeding, replace with the full rules from firestore.rules
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow the seed script to write communities (open write, temporary)
+    match /communities/{communityId} {
+      allow read: if true;
+      allow write: if true;  // ← TEMPORARY: remove after seeding
+    }
+    // Lock everything else
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
