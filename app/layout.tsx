@@ -17,6 +17,7 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "https://science-of-truth.vercel.app"),
   title: "Tree of Truth — Exploring Consciousness & Reality",
   description: "A living knowledge architecture bridging ancient non-dual wisdom traditions (Advaita Vedanta, Buddhism) and modern scientific inquiry (neuroscience, quantum physics, philosophy of mind).",
   keywords: "Advaita Vedanta, Buddhism, Consciousness, Self-Inquiry, Neuroscience, Quantum Physics, Philosophy of Mind, Panpsychism, Idealism, Ramana Maharshi, Nisargadatta Maharaj, Donald Hoffman",
