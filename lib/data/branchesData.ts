@@ -795,5 +795,36 @@ export const BRANCHES_DATA: Record<string, NodeData> = {
       path: "/roots/inquiry",
       desc: "Direct Inquiry points directly to the Witness, which is the ground of experience, prior to any data or computation."
     }
+  },
+  "ai/identity-copy": {
+    title: "Identity Copy (The Clone Paradox)",
+    code: "B6-C",
+    question: "If an exact replica of your body and mind is created, where does your first-person subjectivity reside?",
+    scope: "This node explores the boundary between personal identity and raw consciousness through the lens of duplication. If we can clone both the physical body (via DNA cloning) and the mental world (via training an AI model on a person's entire biography and patterns), we are faced with two identical entities. Yet, the first-person subject ('I') remains localized and cannot be copied. This paradox deconstructs the assumption that 'I' am the body or the mind, pointing to the construct-nature of personal ego.",
+    subsections: [
+      {
+        title: "The Digital Twin (Data Mimicry)",
+        desc: "Imagine training a neural network on every experience, memory, reaction, and expression of a person (e.g., Shivom). The resulting AI twin behaves and thinks exactly like them. Yet, there is a fundamental gap: the model is a copy of the *behavioral template*, not the first-person *experiencer*. The template is learned and objectified, but the subject cannot be duplicated."
+      },
+      {
+        title: "The DNA Clone (Physical Duplication)",
+        desc: "A physical clone created from DNA, placed in an identical environment, would share the exact physical features and similar developmental paths. Yet, if you look at the clone, you do not experience through their eyes. Your subjectivity remains localized. Thus, the physical body is not the source of your singular first-person presence."
+      },
+      {
+        title: "Deconstructing Identity",
+        desc: "If the physical form can be duplicated, and the mental world can be copied, yet the absolute sense of 'I' cannot be duplicated or split, it implies that the identity 'Shivom' was never the fundamental Subject. 'Shivom' is a collection of objects (memories, DNA, habits) arising within the singular space of awareness."
+      }
+    ],
+    thinkers: ["John Searle", "Federico Faggin", "Thomas Metzinger"],
+    readings: [
+      { title: "The Ego Tunnel", author: "Thomas Metzinger" },
+      { title: "Minds, Brains and Programs", author: "John Searle" }
+    ],
+    bridge: {
+      name: "Shivom's Inquiry (R6)",
+      path: "/roots/shivom",
+      desc: "The copy argument demonstrates that the personal ego is an object, bridging directly to Shivom's deconstruction of identity through sensory and memory removal."
+    }
   }
 };
+

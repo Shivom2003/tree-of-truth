@@ -842,48 +842,49 @@ export const ROOTS_DATA: Record<string, NodeData> = {
     title: "Congenital Sensory Impairment",
     code: "R6-B",
     question: "If the senses were absent from birth, would a mind or personality ever form?",
-    scope: "A thought experiment exploring the dependency of intellect and personality on sensory experiences.\n\nIt highlights that our personal identity is a constructed process, not an inherent entity.",
+    scope: "A thought experiment exploring how intelligence, intellect, and reasoning are emergent patterns constructed from sensory datasets, whereas raw consciousness is fundamental. By examining congenital sensory impairment (being born deaf-blind and senseless), we distinguish between the brain's trained intellect and the underlying spark of living awareness.",
     subsections: [
       {
-        title: "No Data, No Mind",
-        desc: "Without sensory inputs (sight, sound, touch), the neural networks of the brain would have no data to learn from.\n\nNo language, intellect, or personality would be constructed. The mind would remain unformed."
+        title: "Emergent Intelligence (The Training Set)",
+        desc: "Human intelligence and mental activities are emergent, dependent on sensory experience. A child is born, sees, hears, touches, smells, and tastes the world; through these inputs, neural networks are trained, patterns of correlation are formed, and a mental world starts being created. Intellect, thoughts, and reasoning are products of these sensory training loops."
       },
       {
-        title: "What remains?",
-        desc: "In the absolute absence of a constructed mind or personality, there would still be life, being, and awareness.\n\nThis proves that our true nature is prior to the intellect and personality."
+        title: "The Sensory-Deprived Alive State",
+        desc: "For someone born with damaged or missing sensory apparatus—such as being blind and deaf from birth—their neural networks have not been trained on visual and audio data, and they cannot learn language in a conventional sense. Yet, something is undeniably alive in them. They still experience their own model of the world, proving that experience itself does not depend on conceptual intelligence."
       },
       {
-        title: "The Transcendent Subject",
-        desc: "Explores the metaphysical implication: if a senseless body is still alive and aware, then consciousness is not an emergent property of sensory integration, but is fundamental.\n\nIt is prior to cognitive content."
+        title: "Intelligence vs. Consciousness",
+        desc: "This thought experiment exposes the error in equating intelligence and thoughts with consciousness. Intelligence is the complex pattern-matching of sensory datasets; consciousness is the fundamental, pre-reflective presence that remains fully alive even when the sensory apparatus is completely silent and the intellect has no material to construct a mind."
       }
     ],
     thinkers: ["Thomas Metzinger", "Dan Zahavi"],
     readings: [
-      { title: "The Ego Tunnel", author: "Thomas Metzinger" }
+      { title: "The Ego Tunnel", author: "Thomas Metzinger" },
+      { title: "Subjectivity and Selfhood", author: "Dan Zahavi" }
     ],
     bridge: {
       name: "Cognitive Science (B3)",
       path: "/branches/cognitive",
-      desc: "What does modern cognitive science say about neural network training in the absence of sensory input?"
+      desc: "What does modern cognitive science say about neural network training and model-building in the absence of sensory input?"
     }
   },
   "shivom/womb": {
     title: "The 'I' in the Womb",
     code: "R6-C",
     question: "What is the nature of awareness before the ego is constructed?",
-    scope: "Exploring the state of awareness in the womb, prior to the development of memory, language, and the subject-object division.",
+    scope: "Exploring the state of awareness in the womb and as a newborn, prior to the accumulation of memory, concept acquisition, and the development of the separate ego.",
     subsections: [
       {
-        title: "Pre-Egoic Presence",
-        desc: "In the womb, there is no language, no memory, and no sense of a separate ego. There is only a bare, unified feeling of existence.\n\nThis shows that the sense of being is prior to the sense of separateness."
+        title: "Pre-Conceptual Subjectivity",
+        desc: "In the womb and in early infancy, there is no language, no memory, and no sense of a separate ego. There is only a bare, unified feeling of existence. The child has not yet separated 'self' from 'world', representing a natural, uncontracted non-dual state of presence prior to identity."
       },
       {
-        title: "The Root of Separateness",
-        desc: "The ego develops only as sensory experiences accumulate and create a division between 'me' (the body-mind) and 'other' (the world).\n\nSeparateness is a learned boundary."
+        title: "The Genesis of the Ego",
+        desc: "The separate ego (e.g., the identity of 'Shivom') is a learned model. It develops only as sensory experiences accumulate, memory begins to trace a story of a localized body-mind actor, and language overlays a conceptual boundary of 'me' vs 'other'. The ego is a template built on top of awareness."
       },
       {
-        title: "Primary Subjectivity",
-        desc: "The infant's experience before separating 'self' from 'world', representing a natural non-dual state that is later veiled by the structures of language and memory.\n\nIt is a state of open, uncontracted being."
+        title: "Reverting to the Source",
+        desc: "By looking back at the pre-birth state, we realize that the biographical identity was never fundamental. Awareness was present before the biography began, and this original, unconditioned state remains the silent ground that allows for any identity to be formed in the first place."
       }
     ],
     thinkers: ["Ramana Maharshi"],
@@ -893,36 +894,38 @@ export const ROOTS_DATA: Record<string, NodeData> = {
     bridge: {
       name: "Neuroscience (B1)",
       path: "/branches/neuroscience",
-      desc: "How does the development of the Default Mode Network in infants correlate with the emergence of the ego?"
+      desc: "How does the development of the Default Mode Network in infants correlate with the transition from pre-conceptual presence to the narrative ego?"
     }
   },
   "shivom/memory-loss": {
     title: "The Memory Loss Argument",
     code: "R6-D",
     question: "If you lost all your memories right now, would you cease to exist?",
-    scope: "Deconstructing identity by analyzing what remains when all personal memory and language are stripped away.",
+    scope: "Deconstructing the narrative self by studying complete amnesia, showing that when personal biography, concepts, and language are wiped clean, the mind reverts to its baseline womb-like state, leaving raw conscious being untarnished.",
     subsections: [
       {
-        title: "Subtracting the Narrative",
-        desc: "If a person suffers complete amnesia, their name, history, relationships, and language vanish. The narrative self is destroyed.\n\nYet, the immediate sense of being and witnessing continues, showing that consciousness is not a product of memory."
+        title: "Dissolving the Biography",
+        desc: "If you were to suffer total memory loss tomorrow, you would forget your name, history, concepts, and even language. All stories that made 'Shivom' would vanish instantly. Yet, would you be dead? The immediate sense of being and experiencing would remain completely alive, demonstrating that consciousness is prior to memory."
       },
       {
-        title: "The Silent Residue",
-        desc: "What remains when all labels are taken away is the pure, contentless presence—the silent Witness.\n\nThis presence does not need a past or a future to exist."
+        title: "Reverting to the Baseline State",
+        desc: "Without memory and concepts, the intellect cannot run. You are like a newborn with a blank slate. This state is a reversion to the original baseline state of the womb—the state that allowed for 'Shivom' as an identity to be formed. It demonstrates that the biographical identity was never a fundamental reality."
       },
       {
-        title: "The Immediate Presence",
-        desc: "The realization that even when personal identity is destroyed by cognitive decay, the pure sense of existence remains untarnished.\n\nIt offers peace prior to biography and memory."
+        title: "The Untarnished Witness",
+        desc: "What remains when all narrative labels, past associations, and future projections are taken away is pure, contentless presence—the silent Witness. This presence does not need a name, history, or memory to exist; it is the ever-present, self-luminous ground of being."
       }
     ],
     thinkers: ["Nisargadatta Maharaj", "Dan Zahavi"],
     readings: [
-      { title: "I Am That", author: "Nisargadatta Maharaj" }
+      { title: "I Am That", author: "Nisargadatta Maharaj" },
+      { title: "Subjectivity and Selfhood", author: "Dan Zahavi" }
     ],
     bridge: {
       name: "Philosophy of Mind (B2)",
       path: "/branches/philosophy",
-      desc: "Memory loss demonstrates that consciousness (qualia/presence) is distinct from cognitive functions (memory/identity)."
+      desc: "Memory loss demonstrates that consciousness (first-person presence) is distinct from cognitive databases and biographical constructs."
     }
   }
+
 };

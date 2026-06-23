@@ -36,7 +36,7 @@ export default function BanyanTree() {
   const getX = (x: number, nodeId?: string) => {
     if (!nodeId) return 600 + (x - 500) * 1.25;
     const node = TREE_NODES.find((n) => n.id === nodeId);
-    
+
     // Determine if it is under the roots subtree
     const familyRootId = getRootFamilyId(nodeId);
     if (familyRootId) {
@@ -45,7 +45,7 @@ export default function BanyanTree() {
         // Main root families concentrated horizontally with factor 1.65 (slightly spreaded)
         const familyRootX = 600 + (familyRoot.x2d - 500) * 1.65;
         const offsetX = x - familyRoot.x2d;
-        
+
         let nudge = 0;
         // Specific visual offsets to resolve all overlaps
         if (nodeId === "l_shankaracharya") nudge = -35;
@@ -60,7 +60,7 @@ export default function BanyanTree() {
         else if (nodeId === "l_metzinger") nudge = -50; // Push left to avoid Rebirth & Bardo
         else if (nodeId === "l_patanjali") nudge = -20;
         else if (nodeId === "l_ramakrishna") nudge = 20;
-        
+
         // Sub-roots
         else if (nodeId === "rs_dvaita") nudge = -15;
         else if (nodeId === "rs_sankhya") nudge = -20;
@@ -86,10 +86,12 @@ export default function BanyanTree() {
         else if (nodeId === "rs_enlightenment") nudge = 25;
 
         // Subnodes are fanned out wider (multiplier 1.45)
-        return familyRootX + offsetX * 1.45 + nudge;
+        // Thinkers under Vedanta Wisdom are fanned less to prevent them from being too scattered (multiplier 0.85)
+        const multiplier = (node && node.category === "leaves" && familyRootId === "r_vedanta") ? 0.85 : 1.45;
+        return familyRootX + offsetX * multiplier + nudge;
       }
     }
-    
+
     const factor = 1.25;
     return 600 + (x - 500) * factor;
   };
@@ -97,7 +99,7 @@ export default function BanyanTree() {
   const getY = (y: number, nodeId?: string) => {
     if (!nodeId) return 580 + (y - 490) * 0.94;
     const node = TREE_NODES.find((n) => n.id === nodeId);
-    
+
     const familyRootId = getRootFamilyId(nodeId);
     if (familyRootId) {
       const familyRoot = TREE_NODES.find((n) => n.id === familyRootId);
@@ -105,7 +107,7 @@ export default function BanyanTree() {
         // Natural original vertical depth mapping factor 1.15 (below soil line)
         const familyRootY = 580 + (familyRoot.y2d - 490) * 1.15;
         const offsetY = y - familyRoot.y2d;
-        
+
         let nudge = 0;
         if (nodeId === "l_shankaracharya") nudge = -15;
         else if (nodeId === "l_vivekananda") nudge = 20;
@@ -119,7 +121,7 @@ export default function BanyanTree() {
         else if (nodeId === "l_metzinger") nudge = -15;
         else if (nodeId === "l_patanjali") nudge = -15;
         else if (nodeId === "l_ramakrishna") nudge = -15; // Raised slightly to avoid dropping too low
-        
+
         // Sub-roots
         else if (nodeId === "rs_dvaita") nudge = -5;
         else if (nodeId === "rs_sankhya") nudge = 10;
@@ -148,7 +150,7 @@ export default function BanyanTree() {
         return familyRootY + offsetY * 1.0 + nudge;
       }
     }
-    
+
     const factor = 0.94;
     return 580 + (y - 490) * factor;
   };
@@ -177,7 +179,7 @@ export default function BanyanTree() {
   const isPathHighlighted = (node: TreeNode) => {
     if (!hoveredNode) return false;
     if (hoveredNode.id === node.id) return true;
-    
+
     let current: TreeNode | undefined = hoveredNode;
     while (current && current.parentId) {
       if (current.parentId === node.id) return true;
@@ -202,7 +204,7 @@ export default function BanyanTree() {
     const ey = getY(node.y2d, node.id);
     const dx = ex - sx;
     const dy = ey - sy;
-    
+
     let cx = sx + dx * 0.5;
     let cy = sy + dy * 0.5;
 
@@ -225,7 +227,7 @@ export default function BanyanTree() {
     const endX = getX(ex);
     const endY = getY(ey);
     const midY = (startY + endY) / 2;
-    
+
     // Wave control points for organic sagging roots
     const ctrlX1 = startX + (endX - startX) * 0.3 + 15;
     const ctrlX2 = startX + (endX - startX) * 0.7 - 10;
@@ -376,7 +378,7 @@ export default function BanyanTree() {
           <path d={`M ${getX(465)} ${getY(580)} C ${getX(458)} ${getY(515)}, ${getX(485)} ${getY(465)}, ${getX(490)} ${getY(420)}`} fill="none" stroke="#2b2010" strokeWidth="3" opacity="0.55" className="pointer-events-none" />
           <path d={`M ${getX(535)} ${getY(580)} C ${getX(542)} ${getY(515)}, ${getX(515)} ${getY(465)}, ${getX(510)} ${getY(420)}`} fill="none" stroke="#2b2010" strokeWidth="3" opacity="0.55" className="pointer-events-none" />
           <path d={`M ${getX(500)} ${getY(580)} C ${getX(492)} ${getY(510)}, ${getX(508)} ${getY(450)}, ${getX(501)} ${getY(420)}`} fill="none" stroke="#2b2010" strokeWidth="4" opacity="0.65" className="pointer-events-none" />
-          
+
           {/* Flared base roots overlapping and wrapping around soil */}
           <path d={`M ${getX(440)} ${getY(580)} Q ${getX(475)} ${getY(555)} ${getX(500)} ${getY(580)}`} fill="none" stroke="url(#rootGradient)" strokeWidth="9" opacity="0.9" className="pointer-events-none" />
           <path d={`M ${getX(560)} ${getY(580)} Q ${getX(525)} ${getY(555)} ${getX(500)} ${getY(580)}`} fill="none" stroke="url(#rootGradient)" strokeWidth="9" opacity="0.9" className="pointer-events-none" />
@@ -637,11 +639,10 @@ export default function BanyanTree() {
       {/* 4. TOOLTIP OVERLAY */}
       {hoveredNode && (
         <div
-          className={`absolute pointer-events-none rounded-2xl p-4 max-w-xs transition-opacity duration-200 z-50 border shadow-[0_15px_35px_rgba(0,0,0,0.6)] ${
-            isDark
+          className={`absolute pointer-events-none rounded-2xl p-4 max-w-xs transition-opacity duration-200 z-50 border shadow-[0_15px_35px_rgba(0,0,0,0.6)] ${isDark
               ? "glass-panel border-gold-matte/30"
               : "bg-white/92 backdrop-blur-md border-amber-300/60"
-          }`}
+            }`}
           style={{
             left: `${tooltipPos.x}px`,
             top: `${tooltipPos.y}px`,

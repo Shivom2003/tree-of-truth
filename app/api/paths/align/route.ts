@@ -21,7 +21,7 @@ const WHITELISTED_PATHS = [
   { name: "Yoga Paths (Fruit - F1)", path: "/fruit/yoga" },
   { name: "Meditation Portal (Fruit - F5)", path: "/fruit/meditation" },
   { name: "Contemplative Journaling (Fruit - F9)", path: "/fruit/journaling" },
-  { name: "Reading Paths (Fruit - F7)", path: "/fruit/reading-paths" },
+  { name: "Psychedelics & Mind (Fruit - F6)", path: "/fruit/psychedelics" },
   { name: "Fruit Harvest Portal", path: "/fruit" },
 ];
 
@@ -82,7 +82,7 @@ Instructions for Path Generation:
    - For 'scientific': Start with branches like /branches/neuroscience or /branches/philosophy before guiding them to deep roots or fruits.
    - For 'seeker': Focus heavily on Direct Self-Inquiry (/roots/inquiry), Advaita Vedanta (/roots/vedanta), and Ramana Maharshi (/leaves/ramana).
    - For 'contemplative': Focus on Meditation (/fruit/meditation), The Trunk (/trunk), or Advaita Vedanta.
-   - For 'practical': Include structured yoga (/fruit/yoga), journaling (/fruit/journaling), reading paths (/fruit/reading-paths), and specific thinkers.
+   - For 'practical': Include structured yoga (/fruit/yoga), journaling (/fruit/journaling), and specific thinkers. If the user leans towards neuropharmacology or chemistry, you may also include psychedelics (/fruit/psychedelics).
 3. The response must be a single valid JSON object matching the following structure:
 {
   "title": "A personalized title for the path (e.g., 'The Empirical Idealist Pathway')",

@@ -199,7 +199,7 @@ export default function RootsPage() {
             </div>
           )}
 
-          {data.subsections.map((sub, index) => (
+          {data.subsections?.map((sub, index) => (
             <article key={index} className="fade-up-element scroll-mt-28 border-l-2 border-gold-matte/10 pl-6 py-1 hover:border-gold-matte/40 transition-colors">
               <div className="flex items-center gap-2 mb-3">
                 <span className="font-serif text-[10px] border border-gold-matte/30 px-2 py-0.5 rounded text-gold-matte">

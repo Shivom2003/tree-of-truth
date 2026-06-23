@@ -26,10 +26,10 @@ export default function FruitPage() {
     const mainFruits = [
       { id: "yoga", title: "Yoga (Four Paths)", code: "F1", desc: "Karma, Jnana, Bhakti, and Raja yoga as paths of action, knowledge, emotion, and concentration.", color: "from-amber-600/10 to-yellow-800/5", q: "How do we channel our energy and intellect into liberation?" },
       { id: "yoga-practices", title: "Yoga Practices", code: "F2", desc: "Asanas, Pranayama, and Dhyana to still the mind-field and somatic fluctuations.", color: "from-yellow-500/10 to-amber-700/5", q: "How do we prepare the body and mind for deep silence?" },
-      { id: "moksha-nirvana", title: "Moksha / Nirvana", code: "F3", desc: "Jivanmukti (living freedom), Bodhisattva ideals, and examples of enlightened beings.", color: "from-amber-700/10 to-orange-800/5", q: "What is the nature of absolute liberation?" },
+      { id: "non-dual-realization", title: "Non-Dual Realization", code: "F3", desc: "Ego dissolution, cessation of representation, and deconstructing the subject-object boundary.", color: "from-amber-700/10 to-orange-800/5", q: "What is the nature of unified, subject-object-free awareness?" },
       { id: "medicine", title: "Acceptance in Medicine", code: "F4", desc: "Mindfulness, MBCT, and CBT techniques as clinical applications of self-distancing.", color: "from-rose-500/10 to-red-600/5", q: "How does modern science apply contemplative tools to mental health?" },
       { id: "meditation", title: "Meditation Portal", code: "F5", desc: "Vipassana, Shikantaza (just sitting), and direct path non-dual meditations.", color: "from-orange-500/10 to-amber-600/5", q: "Which meditation method fits your current state?" },
-      { id: "reading-paths", title: "Reading Paths", code: "F6", desc: "Curated book lists for beginners, science backgrounds, and advanced philosophical seekers.", color: "from-yellow-600/10 to-yellow-700/5", q: "How do you navigate this vast literature systematically?" },
+      { id: "psychedelics", title: "Psychedelics & Mind", code: "F6", desc: "The therapeutic role of psilocybin, DMT, and serotonin in mental health and chemical ego-death.", color: "from-yellow-600/10 to-yellow-700/5", q: "Can chemical intervention trigger ego dissolution?" },
       { id: "self-inquiry", title: "Guided Self-Inquiry", code: "F7", desc: "Step-by-step guidance to trace the I-thought back to its silent source.", color: "from-amber-500/10 to-yellow-600/5", q: "Can we trace the sense of being back to its source right now?" },
       { id: "playlists", title: "Video Playlists", code: "F8", desc: "Curated YouTube playlists containing lectures, direct pointers, and scientific debates.", color: "from-yellow-500/10 to-amber-700/5", q: "What are the key audio-visual lectures and debates to watch?" },
       { id: "journaling", title: "Journaling Prompts", code: "F9", desc: "Contemplative prompts to deconstruct personal identity, womb awareness, and sleep.", color: "from-amber-700/10 to-orange-800/5", q: "What questions can you write about to dismantle your ego assumptions?" }
@@ -146,6 +146,16 @@ export default function FruitPage() {
       <main className="px-6 md:px-12 max-w-5xl mx-auto mt-12 grid grid-cols-1 lg:grid-cols-3 gap-12">
         {/* Left Column: Deep Content Sections */}
         <div className="lg:col-span-2 flex flex-col gap-12">
+          {/* Warning Banner if present */}
+          {data.warning && (
+            <div className="fade-up-element p-5 rounded-2xl border border-red-500/20 bg-red-950/10 text-red-200/90 flex gap-3 items-start shadow-[0_0_15px_rgba(239,68,68,0.05)]">
+              <span className="text-xl">⚠️</span>
+              <div className="text-xs md:text-sm leading-relaxed font-light font-sans">
+                {data.warning}
+              </div>
+            </div>
+          )}
+
           <div className="fade-up-element">
             <h3 className="text-xs uppercase tracking-wider text-gold-matte font-bold mb-3">Scope of Investigation</h3>
             <p className="text-sm md:text-base text-gold-light/80 leading-relaxed font-light whitespace-pre-line">
@@ -153,21 +163,84 @@ export default function FruitPage() {
             </p>
           </div>
 
-          {data.subsections.map((sub, index) => (
-            <article key={index} className="fade-up-element scroll-mt-28 border-l-2 border-gold-matte/10 pl-6 py-1 hover:border-gold-matte/40 transition-colors">
-              <div className="flex items-center gap-2 mb-3">
-                <span className="font-serif text-[10px] border border-gold-matte/30 px-2 py-0.5 rounded text-gold-matte">
-                  0{index + 1}
-                </span>
-                <h2 className="font-serif text-xl md:text-2xl text-gold-bright tracking-wide">
-                  {sub.title}
-                </h2>
+          {/* Steps Timeline if present */}
+          {data.steps && data.steps.length > 0 && (
+            <div className="fade-up-element flex flex-col gap-8 mt-4">
+              <h3 className="text-xs uppercase tracking-wider text-gold-matte font-bold">Guided Steps & Practice</h3>
+              <div className="flex flex-col gap-8 relative before:absolute before:left-4 before:top-2 before:bottom-2 before:w-[1px] before:bg-gold-matte/20">
+                {data.steps.map((step, idx) => (
+                  <div key={idx} className="relative pl-10 flex flex-col gap-3 group">
+                    {/* Circle Node */}
+                    <div className="absolute left-1.5 top-1.5 w-6 h-6 rounded-full border border-gold-matte/40 bg-cosmic-dark flex items-center justify-center text-[10px] font-mono text-gold-bright group-hover:border-gold-bright transition-colors">
+                      {idx + 1}
+                    </div>
+                    <div>
+                      <h4 className="font-serif text-lg text-gold-bright mb-1">{step.title}</h4>
+                      <p className="text-xs md:text-sm text-gold-light/75 leading-relaxed font-light">{step.desc}</p>
+                    </div>
+                    {step.image && (
+                      <div className="mt-2 max-w-md overflow-hidden rounded-xl border border-gold-matte/15">
+                        <img 
+                          src={step.image} 
+                          alt={step.title}
+                          className="w-full h-48 object-cover hover:scale-105 transition-transform duration-500" 
+                        />
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-              <p className="text-xs md:text-sm text-gold-light/80 leading-relaxed font-light whitespace-pre-line">
-                {sub.desc}
-              </p>
-            </article>
-          ))}
+            </div>
+          )}
+
+          {/* Subsections if present */}
+          {data.subsections && data.subsections.length > 0 && (
+            <div className="flex flex-col gap-8">
+              {data.subsections.map((sub, index) => (
+                <article key={index} className="fade-up-element scroll-mt-28 border-l-2 border-gold-matte/10 pl-6 py-1 hover:border-gold-matte/40 transition-colors">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="font-serif text-[10px] border border-gold-matte/30 px-2 py-0.5 rounded text-gold-matte">
+                      0{index + 1}
+                    </span>
+                    <h2 className="font-serif text-xl md:text-2xl text-gold-bright tracking-wide">
+                      {sub.title}
+                    </h2>
+                  </div>
+                  <p className="text-xs md:text-sm text-gold-light/80 leading-relaxed font-light whitespace-pre-line">
+                    {sub.desc}
+                  </p>
+                </article>
+              ))}
+            </div>
+          )}
+
+          {/* Child Links if present */}
+          {data.childLinks && data.childLinks.length > 0 && (
+            <div className="fade-up-element flex flex-col gap-6 mt-4">
+              <h3 className="text-xs uppercase tracking-wider text-gold-matte font-bold">Sub-Practices & Paths</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {data.childLinks.map((link, idx) => (
+                  <Link 
+                    key={idx}
+                    href={link.path}
+                    className="group glass-panel glass-panel-hover p-5 rounded-xl border border-gold-matte/10 hover:border-gold-bright/30 bg-gold-matte/2 transition-all flex flex-col justify-between h-40"
+                  >
+                    <div>
+                      <h4 className="font-serif text-base text-gold-bright mb-1 group-hover:text-gold-bright transition-colors">
+                        {link.title}
+                      </h4>
+                      <p className="text-xs text-gold-light/70 font-light leading-relaxed">
+                        {link.desc}
+                      </p>
+                    </div>
+                    <span className="text-[9px] text-gold-bright font-semibold uppercase tracking-wider flex items-center gap-1 mt-3">
+                      Explore Path <ArrowRight className="w-2.5 h-2.5 group-hover:translate-x-1 transition-transform" />
+                    </span>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         {/* Right Column: Thinkers & Readings */}

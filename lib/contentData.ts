@@ -19,10 +19,22 @@ export interface NodeData {
   code: string;
   question: string;
   scope: string;
-  subsections: SubSection[];
+  subsections?: SubSection[];
   thinkers: string[];
   readings: Reading[];
   bridge: Bridge;
+  childLinks?: {
+    title: string;
+    path: string;
+    desc: string;
+    image?: string;
+  }[];
+  warning?: string;
+  steps?: {
+    title: string;
+    desc: string;
+    image?: string;
+  }[];
 }
 
 export interface ThinkerData {
